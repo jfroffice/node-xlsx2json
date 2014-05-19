@@ -12,11 +12,11 @@ npm install
 Usage
 =====
 ```
-var data = xlsx2json.load({
+var rows = xlsx2json.load({
 	filename: filename,
 	sheetNumber: 0,
 	minRow: 3,
-	max: 250,  /* limit max member */
+	max: 250,  /* optional: limit max row */
 	data: {
 		lastname: 'H',
 		firstname: 'G',
@@ -24,3 +24,12 @@ var data = xlsx2json.load({
 	}
 });
 ```
+
+Looping on each row
+===================
+
+for(var i=0; i<rows.length; i++) {
+	var row = rows[i];
+	var fullname = row.lastname + ' ' + row.firstname + ' ' + row.email;
+	console.log(fullname);
+}
