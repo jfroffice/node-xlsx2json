@@ -52,7 +52,6 @@ function ext(data) {
 				var date = data.v || '';
 				if (date.length > 0) {
 					var tab = date.split('/');
-					console.log(tab[1] + '/' + tab[0] + '/' + tab[2]);
 					return tab[1] + '/' + tab[0] + '/' + tab[2];
 				} else {
 					return date;
