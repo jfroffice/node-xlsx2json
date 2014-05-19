@@ -9,6 +9,10 @@ Install
 npm install
 ```
 
+Dependency
+==========
+[node-xlsx](https://github.com/mgcrea/node-xlsx)
+
 Usage
 =====
 ```
@@ -27,9 +31,10 @@ var rows = xlsx2json.load({
 
 Looping on each row
 ===================
-
+```
 for(var i=0; i<rows.length; i++) {
 	var row = rows[i];
 	var fullname = row.lastname + ' ' + row.firstname + ' ' + row.email;
 	console.log(fullname);
 }
+```
