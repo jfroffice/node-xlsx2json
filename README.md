@@ -4,17 +4,17 @@ node-xlsx2json
 simple XLSX reader to JSON
 
 Install
-=======
+-------
 ```
 npm install
 ```
 
 Dependency
-==========
+----------
 [node-xlsx](https://github.com/mgcrea/node-xlsx)
 
 Usage
-=====
+-----
 ```
 var rows = xlsx2json.load({
 	filename: filename,		/* mandatory: xlsx filename to read */
@@ -30,7 +30,7 @@ var rows = xlsx2json.load({
 ```
 
 Looping on each row
-===================
+-------------------
 ```
 for(var i=0; i<rows.length; i++) {
 	var row = rows[i];
