@@ -1,4 +1,4 @@
-xlsx2json
+node-xlsx2json
 =========
 
 simple XLSX reader to JSON
