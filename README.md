@@ -17,12 +17,12 @@ Usage
 =====
 ```
 var rows = xlsx2json.load({
-	filename: filename,
-	sheetNumber: 0,
-	minRow: 3,
-	max: 250,  /* optional: limit max row */
-	data: {
-		lastname: 'H',
+	filename: filename,		/* mandatory: xlsx filename to read */
+	sheetNumber: 0,			/* optional: 0 by default */
+	minRow: 3,			/* optional: 0 by default */
+	max: 250,  			/* optional: to limit max row, without no row limit */
+	data: {				/* mandatory: object json mapping */
+		lastname: 'H',	
 		firstname: 'G',
 		email: 'P'
 	}
