@@ -1,4 +1,4 @@
-var xlsjs = require('xlsx'),
+var xlsjs = require('node-xlsx'),
 	path = require('path');
 
 function decode_col(c) {
@@ -67,6 +67,10 @@ function ext(data) {
 	}
 }
 
+function getIndexFromCol(col) {
+	return col.charCodeAt() - 65;
+}
+
 exports.load = function(cfg) {
 
 	if (!cfg.filename) {
@@ -74,26 +78,26 @@ exports.load = function(cfg) {
 		return [];
 	}
 
-	var data = xlsjs.readFile(path.resolve(__dirname, cfg.filename)),
-		sheetName = data.SheetNames[cfg.sheetNumber || 0],
-		sheet = data.Sheets[sheetName],
+	var data = xlsjs.parse(path.resolve(__dirname, cfg.filename)),
+		sheet = data.worksheets[cfg.sheetNumber || 0],
 		minRow = cfg.minRow || 0,
-		range = decode_range(sheet["!ref"]),
-		max = range.e.r + 2,
+		max = sheet.maxRow,
 		array = [];
 
-	if (cfg.max && max > cfg.max) {
+	if (cfg.max && max>cfg.max) {
 		max = cfg.max;
 	}
 
-	for (var i = minRow; i < max; ++i) {
+	for (var i=minRow; i<max; ++i) {
 
 		var obj = {};
 
 		for (var prop in cfg.data) {
 			if (cfg.data.hasOwnProperty(prop)) {
 				var value = cfg.data[prop];
-				obj[prop] = ext(sheet[value + i]);
+				var index = getIndexFromCol(value);
+				var row = sheet.data[i];
+				obj[prop] = row[index].value;/*ext(sheet.data[value + i]);*/
 			}
 		}
 
